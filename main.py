@@ -184,7 +184,6 @@ if __name__ == '__main__':
 
     del_all_btn.place(relx=0.8, rely=0.75, anchor=tkinter.CENTER)
 
-
     combobox_var = customtkinter.StringVar(value='Default')
     combobox_values = ','.join(os.listdir(f'{os.getcwd()}\\files\\'))
     combobox = customtkinter.CTkComboBox(master=root, values=combobox_values, variable=combobox_var, width=200)
