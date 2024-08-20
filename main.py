@@ -4,13 +4,12 @@ import os
 import customtkinter
 from app import handlers
 
+root = CTk()
 
 if __name__ == '__main__':
 
     customtkinter.set_appearance_mode('Dark')
     customtkinter.set_default_color_theme('blue')
-
-    root = CTk()
 
     root.geometry('700x500')
     root.resizable(True, True)
@@ -29,7 +28,7 @@ if __name__ == '__main__':
                                   border_width=0,
                                   corner_radius=10,
                                   text='Rec.',
-                                  command=handlers.listen())
+                                  command=handlers.listen)
 
     rec_btn.place(relx=0.8, rely=0.3, anchor=tkinter.CENTER)
 
@@ -39,7 +38,7 @@ if __name__ == '__main__':
                                   border_width=0,
                                   corner_radius=10,
                                   text='Run',
-                                  command=handlers.run())
+                                  command=handlers.run)
 
     run_btn.place(relx=0.8, rely=0.45, anchor=tkinter.CENTER)
 
@@ -60,7 +59,7 @@ if __name__ == '__main__':
                                      border_width=0,
                                      corner_radius=10,
                                      text='Delete\n last file',
-                                     command=handlers.delete())
+                                     command=handlers.delete)
 
     del_bn.place(relx=0.8, rely=0.60, anchor=tkinter.CENTER)
 
@@ -70,7 +69,7 @@ if __name__ == '__main__':
                                           border_width=0,
                                           corner_radius=10,
                                           text='Delete\nALL files',
-                                          command=handlers.del_all())
+                                          command=handlers.delete)
 
     del_all_btn.place(relx=0.8, rely=0.75, anchor=tkinter.CENTER)
 
