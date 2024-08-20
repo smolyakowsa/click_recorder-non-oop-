@@ -3,7 +3,7 @@ import logging
 import keyboard
 import os.path
 import datetime
-import main
+import main_window
 
 
 def python_file():
@@ -36,23 +36,23 @@ def on_click(x, y, button, pressed):
 
 
 def listen():
-    main.root.withdraw()
+    main_window.root.withdraw()
     file_name = python_file()
     logging.basicConfig(filename=file_name, level=logging.DEBUG, format='%(message)s', force=True)
     with Listener(on_click=on_click) as listener:
         while keyboard.wait('esc') is not None:
             listener.join()
-    main.root.deiconify()
+    main_window.root.deiconify()
 
 
 def run():
-    main.root.withdraw()
+    main_window.root.withdraw()
     path = os.getcwd()
     os.chdir(f'{path}\\files\\')
     last_file = ''.join(sorted(os.listdir(f'{os.getcwd()}'))[-1::])
     os.system(f'python {last_file}')
     os.chdir(path)
-    main.root.deiconify()
+    main_window.root.deiconify()
 
 
 def delete():
