@@ -1,12 +1,9 @@
 import tkinter
-from cProfile import label
-from doctest import master
-
 from customtkinter import CTk
 import os
 import customtkinter
-from app import handlers
-from PIL import Image
+from app import handlers, rename_window, sure_window
+
 
 root = CTk()
 
@@ -22,7 +19,7 @@ root.title('Click Recorder')
 root.grid_rowconfigure(3, weight=1)
 root.grid_columnconfigure(5, weight=1)
 
-run_state = 'disabled' if os.path.isdir('files') is False or os.listdir('files') == [] else 'enabled'
+run_state = 'disabled' if os.path.isdir('../files') is False or os.listdir('../files') == [] else 'enabled'
 
 rec_btn = customtkinter.CTkButton(master=root,
                               width=250,
@@ -60,8 +57,8 @@ del_bn = customtkinter.CTkButton(master=root,
                                  height=50,
                                  border_width=0,
                                  corner_radius=10,
-                                 text='Delete\n last file',
-                                 command=handlers.delete)
+                                 text='Delete',
+                                 command=sure_window.open)
 
 del_bn.place(relx=0.8, rely=0.60, anchor=tkinter.CENTER)
 
@@ -71,18 +68,18 @@ del_all_btn = customtkinter.CTkButton(master=root,
                                       border_width=0,
                                       corner_radius=10,
                                       text='Delete\nALL files',
-                                      command=handlers.delete)
+                                      command=sure_window.open)
 
 del_all_btn.place(relx=0.8, rely=0.75, anchor=tkinter.CENTER)
 
 
 rename = customtkinter.CTkButton(master=root,
-                                      width=250,
-                                      height=50,
-                                      border_width=0,
-                                      corner_radius=10,
-                                      text='Rename',
-                                      command=handlers.delete)
+                                 width=250,
+                                 height=50,
+                                 border_width=0,
+                                 corner_radius=10,
+                                 text='Rename',
+                                 command=rename_window.open)
 
 rename.place(relx=0.2, rely=0.45, anchor=tkinter.CENTER)
 
@@ -92,8 +89,7 @@ combobox_values = os.listdir(f'{os.getcwd()}\\files\\')
 combobox = customtkinter.CTkComboBox(master=root, values=combobox_values, variable=combobox_var, width=350)
 combobox.place(relx=0.3, rely=0.3, anchor=tkinter.CENTER)
 
-
-logo_img = Image.open('logos\\main_logo.png')
-ctk_img = customtkinter.CTkImage(light_image=logo_img,size=(350, 100))
-label = customtkinter.CTkLabel(master=root, image=ctk_img, text='')
-label.place(relx=0.25, rely=0.02)
+# logo_img = Image.open('logos\\main_logo.png')
+# ctk_img = customtkinter.CTkImage(light_image=logo_img,size=(300, 100))
+# label = customtkinter.CTkLabel(master=root, image=ctk_img)
+# label.place(relx=0.25, rely=0.02)

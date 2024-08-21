@@ -3,7 +3,7 @@ import logging
 import keyboard
 import os.path
 import datetime
-import main_window
+from app import main_window, rename_window, sure_window
 
 
 def python_file():
@@ -62,5 +62,9 @@ def delete():
     os.remove(f'{last_file}')
     os.chdir(path)
 
-def rename_file(cur_name, new_name):
-    os.rename(f'\\files\\{cur_name}', new_name)
+
+
+# def rename_file(cur_name='rename_file'):
+#     if main_window.combobox_var != 'Default':
+#         rename_window.open()
+#         #os.rename(f'\\files\\{cur_name}', new_name)

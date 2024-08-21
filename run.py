@@ -1,4 +1,4 @@
-from main_window import root
+from app.main_window import root
 
 
 if __name__ == '__main__':
