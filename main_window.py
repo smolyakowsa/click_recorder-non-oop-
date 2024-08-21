@@ -1,12 +1,16 @@
 import tkinter
+from cProfile import label
+from doctest import master
+
 from customtkinter import CTk
 import os
 import customtkinter
 from app import handlers
+from PIL import Image
 
 root = CTk()
 
-customtkinter.set_appearance_mode('Dark')
+customtkinter.set_appearance_mode('Light')
 customtkinter.set_default_color_theme('blue')
 
 root.geometry('700x500')
@@ -72,8 +76,14 @@ del_all_btn = customtkinter.CTkButton(master=root,
 del_all_btn.place(relx=0.8, rely=0.75, anchor=tkinter.CENTER)
 
 combobox_var = customtkinter.StringVar(value='Default')
-combobox_values = ','.join(os.listdir(f'{os.getcwd()}\\files\\'))
-combobox = customtkinter.CTkComboBox(master=root, values=combobox_values, variable=combobox_var, width=200)
-combobox.place(relx=0.2, rely=0.3, anchor=tkinter.CENTER)
+combobox_values = os.listdir(f'{os.getcwd()}\\files\\')
+combobox = customtkinter.CTkComboBox(master=root, values=combobox_values, variable=combobox_var, width=300)
+combobox.place(relx=0.25, rely=0.3, anchor=tkinter.CENTER)
+
+
+logo_img = Image.open('logos\\main_logo.png')
+ctk_img = customtkinter.CTkImage(light_image=logo_img,size=(350, 100))
+label = customtkinter.CTkLabel(master=root, image=ctk_img, text='')
+label.place(relx=0.25, rely=0.02)
 
 
