@@ -83,11 +83,26 @@ rename = customtkinter.CTkButton(master=root,
 
 rename.place(relx=0.2, rely=0.45, anchor=tkinter.CENTER)
 
-def combobox():
-    combobox_var = customtkinter.StringVar(value='Default')
-    combobox_values = os.listdir(f'{os.getcwd()}\\files\\')
-    combobox = customtkinter.CTkComboBox(master=root, values=combobox_values, variable=combobox_var, width=350)
-    combobox.place(relx=0.3, rely=0.3, anchor=tkinter.CENTER)
+
+def refresh_combo_box():
+    return os.listdir(f'{os.getcwd()}\\files\\')
+
+
+refresh = customtkinter.CTkButton(master=root,
+                                 width=250,
+                                 height=50,
+                                 border_width=0,
+                                 corner_radius=10,
+                                 text='Refresh',
+                                 command=refresh_combo_box)
+
+refresh.place(relx=0.2, rely=0.75, anchor=tkinter.CENTER)
+
+
+combobox_var = customtkinter.StringVar(value='Default')
+combobox_values = refresh_combo_box()
+combobox = customtkinter.CTkComboBox(master=root, values=combobox_values, variable=combobox_var, width=350)
+combobox.place(relx=0.3, rely=0.3, anchor=tkinter.CENTER)
 
 # logo_img = Image.open('logos\\main_logo.png')
 # ctk_img = customtkinter.CTkImage(light_image=logo_img,size=(300, 100))
