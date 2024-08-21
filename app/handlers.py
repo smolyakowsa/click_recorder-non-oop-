@@ -61,3 +61,6 @@ def delete():
     last_file = ''.join(sorted(os.listdir(f'{os.getcwd()}'))[-1::])
     os.remove(f'{last_file}')
     os.chdir(path)
+
+def rename_file(cur_name, new_name):
+    os.rename(f'\\files\\{cur_name}', new_name)
